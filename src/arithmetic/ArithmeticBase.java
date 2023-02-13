@@ -12,28 +12,34 @@ import java.util.Scanner;
  * change the code to use enum instead String and mention the advantage of enum.
  * @author sivagamasrinivasan
  * 
- */
+*/
+
+
 public class ArithmeticBase 
 {
- public double x,y;
+    public double x,y;
     double calculate(double x, double y) 
-        {
-        Scanner sc =new Scanner(System.in);
+    {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter arithmetic operation to Perform: ");
-        String s= sc.next();
-        switch (s.toUpperCase()) 
+        ArithmeticOperation operation = ArithmeticOperation.valueOf(sc.next().toUpperCase());
+        switch (operation) 
         {
-            case "PLUS":
+            case PLUS:
                 return x + y;
-            case "MINUS":
+            case MINUS:
                 return x - y;
-            case "TIMES":
+            case TIMES:
                 return x * y;
-            case "DIVIDE":
+            case DIVIDE:
                 return x / y;
             default:
                 throw new AssertionError("Unknown operations " + this);
         }
     }
-   
+}
+
+enum ArithmeticOperation
+{
+    PLUS, MINUS, TIMES, DIVIDE
 }
